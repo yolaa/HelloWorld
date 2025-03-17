@@ -1,0 +1,401 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="MobileOptimized" content="320">
+<title>Download Manager for Android</title>
+<style>body{line-height:1.4em;font-size:16px;font-family:Arial, Helvetica, sans-serif;color:#ffffff;background:#e0ebe0;}
+html, body, span, div, p, a, table, tbody, td, h1, h2, h3, h4, h5, img, form, font, strong, b, i, dl, dt, dd, ol, ul, li, dl, dd, dt, iframe, label, blockquote, input, button{padding:0;margin:0;list-style:none;font-size:inherit;}
+header{background:#191919;box-sizing:border-box;-webkit-box-sizing:border-box;}
+img{vertical-align:middle;border:none;}
+.img{max-width:100%;max-height:100%;}
+img.logo{width:300px;height:75px;background:url('./images/sprite.png') 0px 0px;}
+img.facebook{width:79px;height:79px;background:url('./images/sprite.png') -10px -76px;}
+img.youtube{width:79px;height:79px;background:url('./images/sprite.png') -110px -76px;}
+img.twitter{width:79px;height:79px;background:url('./images/sprite.png') -211px -76px;}
+img.video{width:32px;height:32px;background:url('./images/sprite.png') -0px -156px;}
+img.music{width:32px;height:32px;background:url('./images/sprite.png') -32px -156px;}
+img.wallpaper{width:32px;height:32px;background:url('./images/sprite.png') -64px -156px;}
+img.android{width:32px;height:32px;background:url('./images/sprite.png') -96px -156px;}
+img.news{width:32px;height:32px;background:url('./images/sprite.png') -128px -156px;}
+img.entertain{width:32px;height:32px;background:url('./images/sprite.png') -160px -156px;}
+img.life{width:32px;height:32px;background:url('./images/sprite.png') -192px -156px;}
+img.moresites{width:32px;height:32px;background:url('./images/sprite.png') -224px -156px;}
+img.searcher_arrow{width:32px;height:32px;background:url('./images/sprite.png') -256px -156px;}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0;}
+.clearfix{zoom:1;}
+.search{height:35px;padding-right:78px;position:relative;margin:0px 10px 4px;}
+.search input{width:100%;height:26px;box-sizing:border-box;-webkit-box-sizing:border-box;padding:2px 4px;border:1px #dbdbdb solid;border-radius:3px;-webkit-border-radius:3px;font-size:14px;color:#555;}
+.search button{width:68px;height:26px;font-size:14px;color:#555;border:1px #dbdbdb solid;border-radius:3px;-webkit-border-radius:3px;background:-webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#f1f1f1));-webkit-box-shadow:inset 1px 1px 1px #fff;cursor:pointer;}
+.search span{position:absolute;top:0;right:0;}
+.goog{background:-webkit-gradient(linear,left top,left bottom,from(#669900),to(#99cc00));padding:14px 0px 0px 0px;}
+.web_site{margin-right:7px;}
+.web_site li{float:left;width:33.3%;text-align:center;padding:0 1px 13px 10px;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.web_site li img{border:#dbdbdb 0px solid;border-radius:2px;}
+a{text-decoration:none;}
+a:link{color:#737f76;text-decoration:none;font-weight:bold}
+a:visited{color:#737f76;}
+a:hover{color:#99cc00;}
+.blue{color:#ffffff;}
+.blue a,.blue a:hover,.blue a:visited{color:#0098db;}
+.bg1{background:-webkit-gradient(linear,left top,right top,from(#336600),to(#99cc00));}
+.bg1 em{background:-webkit-gradient(linear,left top,left bottom,from(#99cc00),to(#669900));}
+.list h1{background:#AAAAAA;width:100%;border-bottom:#d5d5d5 1px dotted;height:24px;line-height:24px;text-align:center;font-weight:bold;}
+.list h1 a{font-size:12px;}
+.list li{width:33.3%;float:left;height:33px;line-height:33px;text-align:left;-webkit-box-sizing:border-box;border-bottom:#e2e4e8 1px dotted;border-right:#e2e4e8 1px dotted;overflow:hidden;padding-left:10px;}
+.list li a{display:block; font-size:14px}
+.list li:nth-child(3n){border-right:none;}
+footer{padding:10px 0;text-align:center;background:#191919;}
+footer span{margin:0 13px;color:#c6cad0;}
+.copy{margin:6px 0 20px;font-size:13px;color:#ccddbb;line-height:20px;}
+.searcher {width:100%; float:left;height:33px;line-height:33px;text-align:left;-webkit-box-sizing:border-box;border-bottom:#e2e4e8 1px dotted;border-right:#e2e4e8 1px dotted;overflow:hidden;padding-left:10px;}
+.arrow_holder {-webkit-box-sizing:border-box;float:left;height:34px;line-height:32px;text-align:center;width:10%;padding-right:2px;margin:0 0 10px;display:block;}
+.title_holder {-webkit-box-sizing:border-box;float:left;height:34px;line-height:32px;text-align:center;width:80%;padding-right:2px;margin:0 0 10px;display:block; color:#555555;}
+@charset "UTF-8";
+
+.AccordionPanel {margin: 0px;padding: 0px; display: block;}
+.AccordionPanelTab {background-color: #555555;border-bottom: solid 1px; border-color:#555555; color:#99cc00; margin: 0px;padding: 4px;}
+.AccordionPanelContent {overflow: auto;	margin: 0px;padding: 0px;}
+.AccordionPanelOpen .AccordionPanelTab {background-color: #555555;}
+.AccordionPanelTabHover {color: #99CC00;}
+.AccordionPanelOpen .AccordionPanelTabHover {color: #669900;}
+.AccordionFocused .AccordionPanelTab {background-color: #555555;}
+
+</style>
+</head>
+
+<body>
+<header>
+    <div style="margin:auto; width: 300px;"><img class="logo" src="./images/trans.png" alt="dmfa" width="1" height="1"></div>
+    <p style="padding:10px 0;text-align:center;background:#191919;"><a href="http://fddm.mobi/mobile/dmfa/howto/">How to Use</a><span style="margin:0 13px;color:#c6cad0;">|</span><a href="http://www.renkmobil.com/download_manager_for_android_privacy.htm">Privacy Policy</a></p>
+</header>
+
+<section>
+	<div class="goog" id="google">
+  		<div class="search clearfix">
+        <form action="http://google.com/search" name="f1" target="_self">
+          <input type="text" name="q">
+          <input type="hidden" name="e" value="g_en">
+          <span>
+          <button type="submit">Google</button>
+          </span>
+        </form>
+		</div>
+	<div class="web_site  clearfix"></div>
+	</div>
+</section>
+<div class="AccordionPanel">
+    <div id="MenuTitle1" style="font-size:17px; font-weight:bold;" class="AccordionPanelTab"><img class="video"
+                                                                                                  style="margin: 0px 10px 0px 10px"
+                                                                                                  src="./images/trans.png"
+                                                                                                  alt="fddm" width="1"
+                                                                                                  height="1">App - Game Review
+    </div>
+    <div id="MenuContent1" class="AccordionPanelContent">
+        <div class="list clearfix">
+            <h1>Popular App Categories</h1>
+            <ul>
+                <li><a href="http://en.discoroid.com/android/category/TOOLS/?static[dm]=1">Tools</a></li>
+                <li><a href="http://en.discoroid.com/android/category/BOOKS_AND_REFERENCE/?static[dm]=1">Books</a></li>
+                <li><a href="http://en.discoroid.com/android/category/COMMUNICATION/?static[dm]=1">Communication</a></li>
+                <li><a href="http://en.discoroid.com/android/category/LIFESTYLE/?static[dm]=1">Life Style</a></li>
+                <li><a href="http://en.discoroid.com/android/category/NEWS_AND_MAGAZINES/?static[dm]=1">News</a></li>
+                <li><a href="http://en.discoroid.com/android/category/PERSONALIZATION/?static[dm]=1">Personalization</a></li>
+                <li><a href="http://en.discoroid.com/android/category/WEATHER/?static[dm]=1">Weather</a></li>
+                <li><a href="http://en.discoroid.com/android/category/BUSINESS/?static[dm]=1">Business</a></li>
+                <li><a href="http://en.discoroid.com/android/category/PHOTOGRAPHY/?static[dm]=1">Photography</a></li>
+            </ul>
+        </div>
+        <div class="list clearfix">
+            <h1>Popular Game Categories</h1>
+            <ul>
+                <li><a href="http://en.discoroid.com/android/category/CASUAL/?static[dm]=1">Casual</a></li>
+                <li><a href="http://en.discoroid.com/android/category/ARCADE/?static[dm]=1">Arcade Action</a></li>
+                <li><a href="http://en.discoroid.com/android/category/BRAIN/?static[dm]=1">Puzzle</a></li>
+                <li><a href="http://en.discoroid.com/android/category/CARDS/?static[dm]=1">Cards Casino</a></li>
+                <li><a href="http://en.discoroid.com/android/category/SPORTS_GAMES/?static[dm]=1">Sports Game</a></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+	
+	
+		<div class="AccordionPanel">
+			<div id="MenuTitle1" style="font-size:17px; font-weight:bold;" class="AccordionPanelTab"><img class="video" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">Video</div> 
+			<div id="MenuContent1" class="AccordionPanelContent">
+				<div class="list clearfix">
+					<h1>Popular Video</h1>
+					<ul>
+						<li><a href="http://potopon.com/_common/search/">Video Search</a></li>
+						<li><a href="http://potopon.com/film_new/showcategory.jsp?c=new">Daily New</a></li>
+						<li><a href="http://tubidy.mobi/">What's Hot</a></li>
+						<li><a href="http://potopon.com/celebrity/">Celebrity</a></li>
+						<li><a href="http://www.funformobile.com/iui/wgallery.php?s=MVVD">Fun 4 Mobile</a></li>
+						<li><a href="http://touch.dailymotion.com/">Daily Motion</a></li>
+						<li><a href="http://potopon.com/">3GP</a></li>
+						<li><a href="http://android.dm/">MP4</a></li>
+						<li><a href="http://t.mobile9.com/">AVI</a></li>
+					</ul>
+				</div>					 
+				<div class="list clearfix">
+					<h1>Video Sites</h1>
+					<ul>
+						<li><a href="http://potopon.com/">Potopon</a></li>
+						<li><a href="http://tubidy.mobi/">Tubidy</a></li>
+						<li><a href="http://mobile9.com/">Mobile9</a></li>
+						<li><a href="http://touch.dailymotion.com/">Daily Motion</a></li>
+						<li><a href="http://3gpfind.com/">3gp Find</a></li>
+						<li><a href="http://m.youtube.com/">Youtube</a></li>							
+					</ul>
+				</div>	
+			</div>
+		</div>
+	
+		<div class="AccordionPanel">
+			<div id="MenuTitle2" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="music" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">Music</div>
+				<div id="MenuContent2"  class="AccordionPanelContent">
+					<div class="list clearfix">
+						<h1>Popular Music</h1>
+						<ul>
+							<li><a href="http://wapkid.com/full_mp3/">Music Search</a></li>
+							<li><a href="http://potopon.com/full_mp3/showcategory.jsp?c=pop">Top 100</a></li>
+							<li><a href="http://wapdam.com/full_mp3/a-z_cat.jsp?cat=pop">What's Hot</a></li>
+							<li><a href="http://m.beemp3.com/">Bee Mp3</a></li>
+							<li><a href="http://android.dm/full_mp3/showcategory.jsp?c=ypop">Pop Music</a></li>
+							<li><a href="http://zamob.com/full_mp3/showcategory.jsp?c=90s">90s</a></li>
+							<li><a href="http://waptrick.com/">Waptrick</a></li>
+							<li><a href="http://twilightwap.com/">TwilightWap</a></li>
+							<li><a href="http://newmp3.mobi/">NewMp3s</a></li>
+							<li><a href="http://lagu.mobi/">Lagu Mobi</a></li>
+							<li><a href="http://wapnext.com/">Wap Next</a></li>
+							<li><a href="http://topmp3.mobi/">Top Mp3</a></li>
+						</ul>
+					</div>
+					<div class="list clearfix">
+						<h1 >Ringtone Picks</h1>
+						<ul>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=pop">Popular</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=new">Newest</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=vipremix">Vip Remix</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=rnb">RnB</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=yrock">Rock</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=latin">Latin</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=elec">Electronic</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=rap">Rap Hiphop</a></li>
+							<li><a href="http://potopon.com/real_music/showcategory.jsp?c=jazz">Jazz</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="AccordionPanel">
+			<div id="MenuTitle3" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="wallpaper" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">Wallpaper</div>
+			<div  id="MenuContent3" class="AccordionPanelContent">
+				<div class="list clearfix">
+						<h1 >Popular Wallpaper</h1>
+						<ul>
+							<li><a href="http://potopon.com/photo_gallery/showcategory.jsp?c=new">Latest</a></li>
+							<li><a href="http://potopon.com/photo_gallery/showsubcategory.jsp?c=celebrities">Celebrity</a></li>
+							<li><a href="http://playmasti.com/site_66.xhtml">Movies</a></li>
+							<li><a href="http://mobilekida.org/18953/Bollywood/1.html">Models</a></li>
+							<li><a href="http://www.mobilefundoo.com/celebrity-wallpapers.htm">Actress</a></li>
+							<li><a href="http://potopon.com/plus18warning/">Models</a></li>
+							<li><a href="http://www.livewallpapers.org/">LiveWall.</a></li>
+							<li><a href="http://m.zedge.net/?p=wallpapers-2-0-1">Zedge</a></li>
+							<li><a href="http://www.talkandroid.com/wallpapers/">Talk And.</a></li>
+						</ul>
+					</div>
+					
+					<div class="list clearfix">
+						<h1 >Wallpaper Sites</h1>
+						<ul>
+							<li><a href="http://flickr.com/">Flickr</a></li>
+							<li><a href="http://www.zoomin.com/">Zoomin</a></li>
+							<li><a href="https://picasaweb.google.com/m/">Picasa</a></li>
+							<li><a href="http://m.photobucket.com/">Photobc.</a></li>
+							<li><a href="http://m.fotki.com/">Fotki</a></li>
+							<li><a href="http://m.tinypic.com/">TinyPic</a></li>
+						</ul>
+					</div>
+			</div>
+		</div>
+        
+        <div class="AccordionPanel">
+			<div id="MenuTitle4" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="android" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">App&Game</div>
+			<div id="MenuContent4"  class="AccordionPanelContent">
+				<div class="list clearfix">
+				<h1 >Hot App</h1>
+					<ul>
+						<li><a href="http://apps.opera.com/">Top App</a></li>
+						<li><a href="http://wap.mobango.com/~vQ112X122/free/mobile/apps-lastuploaded">New App</a></li>
+						<li><a href="http://android.dm/">Android App</a></li>
+						<li><a href="http://potopon.com/">Iphone App</a></li>
+						<li><a href="http://mobile9.com/">Mobile9</a></li>
+						<li><a href="http://zedge.net/">Zedge</a></li>
+						<li><a href="http://m.getjar.com/">GetJar</a></li>
+					</ul>
+				</div>
+				
+				<div class="list clearfix">
+					<h1 >Hot Game</h1>
+					<ul>
+						<li><a href="http://potopon.com/">Potopon</a></li>
+						<li><a href="http://gamerwap.info/">Gamer Wap</a></li>
+						<li><a href="http://djuzz.com/">Djuzz</a></li>
+						<li><a href="http://m.gamesgames.com/">Games Games</a></li>
+						<li><a href="http://www.magicappstore.com/">Magic App</a></li>
+						<li><a href="http://wapx.ws/games/">Wapx</a></li>
+						<li><a href="http://www.bingwap.com/m/3/free-mobile-games.shtml">BingWap</a></li>
+						<li><a href="http://wapwav.com/">Wapwav</a></li>
+						<li><a href="http://m.softgames.de/">Soft Games</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        
+        <div class="AccordionPanel">
+			<div id="MenuTitle5" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="news" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">News</div>
+			<div id="MenuContent5"  class="AccordionPanelContent">
+				<div class="list clearfix">
+					<h1 >News</h1>
+					<ul>
+						<li><a href="http://news.google.com/news/m/">Google News</a></li>
+						<li><a href="http://m.yahoo.com/w/ynews">Yahoo News</a></li>
+						<li><a href="http://www.nbcnews.com/">NBC News</a></li>
+						<li><a href="http://m.cbsnews.com/">CBS News</a></li>
+						<li><a href="http://mobile.reuters.com/">Reuters</a></li>
+						<li><a href="http://foxnews.mobi/">Fox News</a></li>
+						<li><a href="http://m.zeenews.com/entertainment.aspx">Showbiz</a></li>
+						<li><a href="http://m.yahoo.com/">Y! OMG</a></li>
+						<li><a href="http://m.indiatoday.in/section/67/1/movies.html">Movies</a></li>	
+					</ul>
+				</div>
+				
+				<div class="list clearfix">
+					<h1 >Sports</h1>
+					<ul>
+						<li><a href="http://m.espn.go.com/wireless/">ESPN</a></li>
+						<li><a href="http://m.yahoo.com/p/sports">Yahoo Sports</a></li>
+						<li><a href="http://m.eurosport.com/">Euro Sport</a></li>
+						<li><a href="http://kickwap.com/">KickWap</a></li>
+						<li><a href="http://sportstap.mobi/">Sports Tap</a></li>
+						<li><a href="http://m.rediff.com/sports/cricket">Rediff</a></li>
+						<li><a href="http://m.fifa.com/">FIFA</a></li>
+						<li><a href="http://m.tennis.com/">Tennis</a></li>
+						<li><a href="http://www.wwe.sify.com/">WWE</a></li>
+					</ul>
+				</div>	  
+			</div>
+		</div>
+        
+        <div class="AccordionPanel">
+			<div id="MenuTitle6" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="entertain" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">Entertain</div>
+			<div id="MenuContent6"  class="AccordionPanelContent">
+				<div class="list clearfix">
+					<h1 >Social Network</h1>
+					<ul>
+						<li><a href="http://peperonity.com/">Peperonity</a></li>
+						<li><a href="http://prodigits.co.uk/">Prodigits</a></li>
+						<li><a href="http://wap.rocketalk.com/">Rocketalk</a></li>
+						<li><a href="http://wap.qeep.net/">Qeep</a></li>
+						<li><a href="http://writelonger.com/">Writelonger</a></li>
+						<li><a href="http://waplog.com/">Waplog</a></li>
+					</ul>
+				</div>
+				
+				<div class="list clearfix">
+					<h1 >Social</h1>
+					<ul>
+						<li><a href="http://m.pinterest.com/">Pinterest</a></li>
+						<li><a href="http://m.google.com/app/plus/?force=1">Google+ Touch</a></li>
+						<li><a href="http://foursquare.com/mobile/">Foursquare</a></li>
+						<li><a href="http://m.getglue.com/">Get Glue</a></li>
+						<li><a href="http://m.hi5.com/">Hi5</a></li>
+						<li><a href="http://mocospace.com/">Mocospace</a></li>
+						<li><a href="http://www.jeevansathi.com/">Jeevans.</a></li>
+						<li><a href="http://m.shaadi.com/mobile/search">Shaadi</a></li>
+						<li><a href="http://www.bharatmatrimony.com/">Bharat</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        
+        <div class="AccordionPanel">
+			<div id="MenuTitle7" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="life" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">Tech&Science</div>
+			<div id="MenuContent7"  class="AccordionPanelContent">
+				<div class="list clearfix">
+					<h1 >Tech</h1>
+					<ul>
+						<li><a href="http://www.fonearena.com/">Fonearena</a></li>
+						<li><a href="http://m.tech2.com/">Tech2</a></li>
+						<li><a href="http://m.techcrunch.com/">Techcrunch</a></li>
+						<li><a href="http://thenextweb.com/">Thenextweb</a></li>
+						<li><a href="http://www.softpedia.com/">Softpedia</a></li>
+						<li><a href="http://www.techradar.com/">Tech Radar</a></li>
+						<li><a href="http://news.cnet.com/">Cnet News</a></li>						
+					</ul>
+				</div>
+				<div class="list clearfix">
+					<h1 >Science</h1>
+					<ul>
+						<li><a href="http://www.nature.com/">Nature</a></li>
+						<li><a href="http://m.popsci.com/">Popular Science</a></li>
+						<li><a href="http://m.popularmechanics.com/">Popular Mechanics</a></li>
+						<li><a href="http://mobile.theverge.com/">The Verge</a></li>
+						<li><a href="http://www.sciencemag.org/">Sience Mag</a></li>
+						<li><a href="http://www.sciencenews.org/">Science News</a></li>
+						<li><a href="http://science.nasa.gov/">Nasa Science</a></li>						
+					</ul>
+				</div>
+			</div>
+		</div>
+        
+        <div class="AccordionPanel">
+			<div id="MenuTitle8" style="font-size:17px; font-weight:bold" class="AccordionPanelTab"><img class="moresites" style="margin: 0px 10px 0px 10px" src="./images/trans.png" alt="fddm" width="1" height="1">More Sites</div>
+			<div id="MenuContent8" class="AccordionPanelContent">
+				<div class="list clearfix">
+					<h1 >Top Sites</h1>
+					<ul>
+						<li><a href="http://m.google.com/">Google</a></li>
+						<li><a href="http://m.facebook.com/">Facebook</a></li>
+						<li><a href="http://m.gmail.com/">Gmail</a></li>
+						<li><a href="http://waptrick.com/">Waptrick</a></li>
+						<li><a href="http://m.getjar.com/">GetJar</a></li>
+						<li><a href="http://mobile.twitter.com/">Twitter</a></li>
+						<li><a href="http://m.yahoo.com/">Yahoo</a></li>
+						<li><a href="http://m.gmail.com/">Gmail</a></li>
+						<li><a href="http://mobile.live.com/">Hotmail</a></li>
+					</ul>
+				</div>
+				
+				<div class="list clearfix">
+					<h1 >Jobs and Life</h1>
+					<ul>
+						<li><a href="http://www.naukri.com/">Naukri</a></li>
+						<li><a href="http://m.monsterindia.com/">Monster</a></li>
+						<li><a href="http://m.timesjobs.com/">Timesjobs</a></li>
+						<li><a href="http://m.mail.in.com/">In</a></li>
+						<li><a href="http://m.carwale.com/">Carwale</a></li>
+						<li><a href="http://m.mobikwik.com/">MobilePay</a></li>
+						<li><a href="http://mobalgam.com/">Mobalgam</a></li>
+					</ul>
+				</div>
+			</div>
+		</div> 
+		<div style="margin-top:24px" class="web_site  clearfix">
+		<ul>
+			<li><a href="http://m.facebook.com/"><img class="facebook" src="./images/trans.png" ></a></li>
+			<li><a href="https://m.youtube.com/"><img class="youtube" src="./images/trans.png" width="1" height="1"></a></li>
+			<li><a href="http://mobile.twitter.com/"><img class="twitter" src="./images/trans.png" width="1" height="1"></a></li>
+		</ul>
+	</div>
+<footer>
+	<p><a href="http://www.renkmobil.com/download_manager_for_android_privacy.htm">Privacy Policy</a><span>|</span><a href="http://www.fddm.mobi/mobile/feedback2.htm">Feedback</a><span>|</span><a href="http://www.fddm.mobi/mobile/sitesuggest2.html">Suggest a Site</a></p>
+    <p class="copy">Copyright@ 2012 - 2013<br/>Download Manager for Android. All Rights Reserved.<br/>v1.50</p>
+</footer>
+</body>
+</html>
